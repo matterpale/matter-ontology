@@ -1,0 +1,702 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/ciirc/ontologies/2020/11/matter-ontology"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/matter-ontology">
+    <Prefix name="" IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-Upper"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Annotation>
+        <AnnotationProperty IRI="http://purl.org/dc/elements/1.1/creator"/>
+        <Literal>Petr Matyáš</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty IRI="http://purl.org/dc/elements/1.1/date"/>
+        <Literal>2020-12-19</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty IRI="http://purl.org/dc/elements/1.1/description"/>
+        <Literal xml:lang="en">An upper ontology originally designed for the purposes of modelling production activities in the context of Industry 4.0.
+
+This ontology was developed as part of a Master Thesis work of the creator, namely &quot;Utilization of Ontologies for Flexible Production Modelling in Industry 4.0&quot;.</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty IRI="http://purl.org/dc/elements/1.1/description"/>
+        <Literal xml:lang="cs">Vyšší ontologie původně navržená pro účely modelování výrobních aktivit v kontextu Průmyslu 4.0.
+
+Tato ontologie byla vyvíjena v rámci diplomové práce autora, konkrétně &quot;Využití ontologií k modelování flexibilní výroby v Průmyslu 4.0&quot;.</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty IRI="http://purl.org/dc/elements/1.1/title"/>
+        <Literal>Matter Ontology</Literal>
+    </Annotation>
+    <Declaration>
+        <Class IRI="#AbstractThing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BasicThing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ConcreteThing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Form"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Information"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Location"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Object"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ObjectForm"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ObjectQuality"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Process"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ProcessForm"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ProcessQuality"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Quality"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Role"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Time"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasQuality"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isLocatedAt"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#playsRole"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#realizesForm"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasUniqueName"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://purl.org/dc/elements/1.1/creator"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://purl.org/dc/elements/1.1/date"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://purl.org/dc/elements/1.1/description"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://purl.org/dc/elements/1.1/title"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#AbstractThing"/>
+        <Class IRI="#BasicThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ConcreteThing"/>
+        <Class IRI="#BasicThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ConcreteThing"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isLocatedAt"/>
+            <Class IRI="#Location"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Form"/>
+        <Class IRI="#AbstractThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Information"/>
+        <Class IRI="#BasicThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Location"/>
+        <Class IRI="#BasicThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Object"/>
+        <Class IRI="#ConcreteThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ObjectForm"/>
+        <Class IRI="#Form"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ObjectQuality"/>
+        <Class IRI="#Quality"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Process"/>
+        <Class IRI="#ConcreteThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProcessForm"/>
+        <Class IRI="#Form"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProcessQuality"/>
+        <Class IRI="#Quality"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Quality"/>
+        <Class IRI="#AbstractThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Time"/>
+        <Class IRI="#BasicThing"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Form"/>
+        <Class IRI="#Quality"/>
+    </DisjointClasses>
+    <DisjointUnion>
+        <Class IRI="#BasicThing"/>
+        <Class IRI="#AbstractThing"/>
+        <Class IRI="#ConcreteThing"/>
+        <Class IRI="#Information"/>
+        <Class IRI="#Location"/>
+        <Class IRI="#Time"/>
+    </DisjointUnion>
+    <DisjointUnion>
+        <Class IRI="#Form"/>
+        <Class IRI="#ObjectForm"/>
+        <Class IRI="#ProcessForm"/>
+    </DisjointUnion>
+    <DisjointUnion>
+        <Class IRI="#Quality"/>
+        <Class IRI="#ObjectQuality"/>
+        <Class IRI="#ProcessQuality"/>
+    </DisjointUnion>
+    <DisjointUnion>
+        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#BasicThing"/>
+        <Class IRI="#Role"/>
+    </DisjointUnion>
+    <AsymmetricObjectProperty>
+        <ObjectProperty IRI="#hasQuality"/>
+    </AsymmetricObjectProperty>
+    <AsymmetricObjectProperty>
+        <ObjectProperty IRI="#playsRole"/>
+    </AsymmetricObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#isLocatedAt"/>
+    </TransitiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#hasQuality"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#playsRole"/>
+    </IrreflexiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasQuality"/>
+        <ObjectUnionOf>
+            <Class IRI="#ConcreteThing"/>
+            <Class IRI="#Form"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isLocatedAt"/>
+        <ObjectUnionOf>
+            <Class IRI="#ConcreteThing"/>
+            <Class IRI="#Location"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#playsRole"/>
+        <Class IRI="#BasicThing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#realizesForm"/>
+        <Class IRI="#ConcreteThing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasQuality"/>
+        <Class IRI="#Quality"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isLocatedAt"/>
+        <Class IRI="#Location"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#playsRole"/>
+        <Class IRI="#Role"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#realizesForm"/>
+        <Class IRI="#Form"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasUniqueName"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasUniqueName"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasUniqueName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#AbstractThing</IRI>
+        <Literal xml:lang="en">A thing or a phenomenon independent of time-space.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#AbstractThing</IRI>
+        <Literal xml:lang="cs">Věc či jev nezávislý na časoprostoru.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AbstractThing</IRI>
+        <Literal xml:lang="en">Abstract Thing</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AbstractThing</IRI>
+        <Literal xml:lang="cs">Abstraktní věc</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>#AbstractThing</IRI>
+        <IRI>#BasicThing</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#BasicThing</IRI>
+        <Literal xml:lang="en">In this ontology, Basic things are all concepts that do not directly depend on context, as opposed to Roles.
+
+This basic distinction cannot be accepted as absolute, since some things in the real world are so strongly connected to the context in which they are experienced, that trying to define them without it may even be counter-productive.
+
+In the case of ontologies importing (and thus implementing) this one, Basic things may also be dependent on a context that is universal throughout the domain to which the implementing ontology is dedicated.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#BasicThing</IRI>
+        <Literal xml:lang="cs">Za základní věci se v této ontologii považují všechny koncepty, které narozdíl od rolí nezávisí přímo na kontextu.
+
+Toto základní dělení nelze brát absolutně, některé věci reálného světa jsou natolik určené vnímáním v určitém kontextu, že může být kontraproduktivní se snažit je vystihnout bez něj.
+
+V rámci ontologií importujících (a tedy implementujících) tuto mohou Základní věci být závislé kontextu, který je univerzální alespoň v rámci domény, které je implementující ontologie určena.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#BasicThing</IRI>
+        <Literal xml:lang="en">Basic Thing</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#BasicThing</IRI>
+        <Literal xml:lang="cs">Základní věc</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ConcreteThing</IRI>
+        <Literal xml:lang="en">A thing related to time or space.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ConcreteThing</IRI>
+        <Literal xml:lang="cs">Věc závislá na čase či prostoru.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ConcreteThing</IRI>
+        <Literal xml:lang="en">Concrete thing</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ConcreteThing</IRI>
+        <Literal xml:lang="cs">Konkrétní věc</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>#ConcreteThing</IRI>
+        <IRI>#BasicThing</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Form</IRI>
+        <Literal xml:lang="en">A Form of an object or process, that can be realized by an instance of a Concrete thing.
+
+In a way, an instance of a Form may be equivalent to a subclass of the Concrete thing concept. Introducing the former is typically motivated by the fact that an individual, unlike a class, may then take part in object properties.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Form</IRI>
+        <Literal xml:lang="cs">Forma věci či procesu, která může být Konkrétní věcí realizována.
+
+V jistém ohledu může instance Formy být ekvivalentní podtřídě Konkrétní věci. Motivace zavedení instance Formy obvykle plyne z toho, že se narozdíl od třídy může účastnit vazeb.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Form</IRI>
+        <Literal xml:lang="en">Form</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Form</IRI>
+        <Literal xml:lang="cs">Forma</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Information</IRI>
+        <Literal xml:lang="cs">Tato třída popisuje objekty, které mohou a nemusí být vztaženy k časoprostoru, proto ji nelze jednoznačně zařadit pod Konkrétní ani Abstraktní věc.
+
+Příkladem informace může být fyzikální zákonitost (bez vazby na časoprostor), nebo také objednávka výrobku (s fixním datem a místem doručení).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Information</IRI>
+        <Literal xml:lang="en">This class describes objects that don&apos;t necessarily relate to time-space, which is why it is not a subclass of neither Abstract not Concrete thing.
+
+An example of instance of this call may be a principle in physics (unrelated with time-space) or a product order (with a fixed date and place of delivery).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Information</IRI>
+        <Literal xml:lang="cs">Informace</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Information</IRI>
+        <Literal xml:lang="en">Information</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Location</IRI>
+        <Literal xml:lang="cs">Geografická lokace, konkrétní místo v prostoru reálného světa.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Location</IRI>
+        <Literal xml:lang="en">Geographical location, a specific place in the real world space.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Location</IRI>
+        <Literal xml:lang="en">Location</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Location</IRI>
+        <Literal xml:lang="cs">Lokace</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Object</IRI>
+        <Literal xml:lang="en">Objects contain all material components of the known universe. They extend way beyond solid state corporeals and include everything with physical nature that can be located in space (at least theoretically).
+
+E.g. box, plant, human, gas, paper notes, piece of code.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Object</IRI>
+        <Literal xml:lang="cs">Předměty zahrnují všechny fyzické součásti známého vesmíru. Nejedná se zdaleka jen o pevná tělesa s jasně danými obrysy, ale o cokoliv, co má fyzikální podstatu a čeho lze alespoň teoreticky určit polohu. 
+
+Např. krabice, rostlina, člověk, plyn, zápisky na papíře či úsek kódu.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Object</IRI>
+        <Literal xml:lang="en">Object</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Object</IRI>
+        <Literal xml:lang="cs">Předmět</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ObjectForm</IRI>
+        <Literal xml:lang="en">A Form specifying the tangible real-world objects.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ObjectForm</IRI>
+        <Literal xml:lang="cs">Forma specifikující hmatatelné věci reálného světa.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ObjectForm</IRI>
+        <Literal xml:lang="cs">Forma předmětu</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ObjectForm</IRI>
+        <Literal xml:lang="en">Object Form</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>#ObjectForm</IRI>
+        <IRI>#Form</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ObjectQuality</IRI>
+        <Literal xml:lang="en">A Quality of objects.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ObjectQuality</IRI>
+        <Literal xml:lang="cs">Vlastnost týkající se předmětů.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ObjectQuality</IRI>
+        <Literal xml:lang="en">Object Quality</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ObjectQuality</IRI>
+        <Literal xml:lang="cs">Vlastnost předmětu</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>#ObjectQuality</IRI>
+        <IRI>#Quality</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Process</IRI>
+        <Literal xml:lang="en">Process as a class contains the occerences and events realized in time-space.  It includes executions of processes, interactions and internal processes of change without relevant actors.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Process</IRI>
+        <Literal xml:lang="cs">Třída Proces je tvořena konkrétními ději vykonanými či jinak uskutečněnými v časoprostoru. Může jít o výkon operací, interakce, ale i interní procesy změny bez relevantních aktérů.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Process</IRI>
+        <Literal xml:lang="cs">Proces</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Process</IRI>
+        <Literal xml:lang="en">Process</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ProcessForm</IRI>
+        <Literal xml:lang="en">A Form specifying processe, events or changes in the real world.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ProcessForm</IRI>
+        <Literal xml:lang="cs">Forma specifikující procesy, děje či změny v reálném světě.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ProcessForm</IRI>
+        <Literal xml:lang="cs">Forma procesu</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ProcessForm</IRI>
+        <Literal xml:lang="en">Process Form</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>#ProcessForm</IRI>
+        <IRI>#Form</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ProcessQuality</IRI>
+        <Literal xml:lang="cs">A Quality of processes.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ProcessQuality</IRI>
+        <Literal xml:lang="cs">Vlastnost týkající se procesů.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ProcessQuality</IRI>
+        <Literal xml:lang="en">Process Quality</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ProcessQuality</IRI>
+        <Literal xml:lang="cs">Vlastnost procesu</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>#ProcessQuality</IRI>
+        <IRI>#Quality</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Quality</IRI>
+        <Literal xml:lang="en">An attribute of o Concrete thing or Form. Introducing an instance of Quality is usually avoided by using a Data property. The advantage of an instance of Quality is mainly the ability to have its own properties.
+
+E.g. color, size (10&apos;&apos; or XL), temperature, duration.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Quality</IRI>
+        <Literal xml:lang="cs">Vlastnost Konkrétní věci či Formy. Zavedení instance Vlastnosti je obvykle nahrazeno využitím atributu. Výhodou instance Vlastnosti je především možnost zapojení do vazeb nebo vlastních atributů.
+
+Např. barva, velikost (30cm nebo XL), teplota, trvání.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Quality</IRI>
+        <Literal xml:lang="en">Quality</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Quality</IRI>
+        <Literal xml:lang="cs">Vlastnost</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Role</IRI>
+        <Literal xml:lang="cs">Koncept role umožňuje ontologii popisovat Základní věci s ohledem na jejich kontext.
+
+Např. v jednom kontextu může předmět hrát roli finálního produktu, pokud byl samostatně objednán. V kontextu výroby jiného finálního produktu však může tentýž předmět hrát roli ingredience.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Role</IRI>
+        <Literal xml:lang="en">The concept of role enables the ontology to describe Basic things within their context.
+
+E.g. an item may play the role of a final product, if it gets ordered individually. That same item may also play a role of an ingredient in the case of production of a different final product.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Role</IRI>
+        <Literal xml:lang="cs">Role</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Role</IRI>
+        <Literal xml:lang="en">Role</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Time</IRI>
+        <Literal xml:lang="en">A point or interval in time, the coordinate within time-space.
+
+An hour, a minute, or midday are not instances of this class.
+
+An example of an instance of this class is January 6th 2021 or 1968-10-24T17:41:25.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Time</IRI>
+        <Literal xml:lang="cs">Bod  či interval v čase jakožto souřadnici časoprostoru.
+
+Hodina, minuta či poledne nejsou instancí této třídy.
+
+Příkladem instance této třídy je 6. leden 2021 nebo 1968-10-24T17:41:25</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Time</IRI>
+        <Literal xml:lang="en">Time</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Time</IRI>
+        <Literal xml:lang="cs">Čas</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasQuality</IRI>
+        <Literal xml:lang="en">has quality</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasQuality</IRI>
+        <Literal xml:lang="cs">má vlastnost</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>#hasQuality</IRI>
+        <IRI>#Quality</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasUniqueName</IRI>
+        <Literal xml:lang="en">has unique name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasUniqueName</IRI>
+        <Literal xml:lang="cs">má unikátní jméno</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isLocatedAt</IRI>
+        <Literal xml:lang="en">is located at</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isLocatedAt</IRI>
+        <Literal xml:lang="cs">nachází se na</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>#isLocatedAt</IRI>
+        <IRI>#Location</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#playsRole</IRI>
+        <Literal xml:lang="cs">hraje roli</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#playsRole</IRI>
+        <Literal xml:lang="en">plays Role</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>#playsRole</IRI>
+        <IRI>#Role</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#realizesForm</IRI>
+        <Literal xml:lang="en">realizes Form</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#realizesForm</IRI>
+        <Literal xml:lang="cs">realizuje formu</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>#realizesForm</IRI>
+        <IRI>#Form</IRI>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

@@ -1,0 +1,48 @@
+define
+
+## ATTRIBUTES
+
+a_tag sub attribute, abstract,          value string;
+
+    a_name sub a_tag;
+
+a_category sub attribute, abstract,     value string;
+
+a_location sub attribute,               value string,
+    owns a_location;
+
+occurs_at sub attribute,                value datetime;
+
+an_amount sub attribute,                value long;
+
+amount_unit sub attribute,              value string;
+
+## ENTITIES
+
+ConcreteEntity sub entity, abstract,    # timespace-dependent physical entities
+    owns a_location;
+
+    Object sub ConcreteEntity;
+
+    Process sub ConcreteEntity,         # a physical occurrence of an event
+        owns occurs_at,
+        plays duration:process;
+
+Information sub entity, abstract;       # entities with loose timespace dependence  
+    
+## RELATIONS
+
+duration sub relation,
+    owns an_amount,                     # length of time
+    owns amount_unit,                   # time unit
+    relates process;
+
+## RULES
+
+rule location-transitivity:
+when {
+    $x has a_location $y;
+    $y has a_location $z;
+} then {
+    $x has $z;
+};
