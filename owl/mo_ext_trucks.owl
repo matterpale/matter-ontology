@@ -6,7 +6,7 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      ontologyIRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/matter-ontology-extension-truck-production">
-    <Prefix name="" IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction"/>
+    <Prefix name="" IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/matter-ontology-extension-truck-production"/>
     <Prefix name="tp" IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction"/>
     <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
@@ -169,7 +169,7 @@
         <ObjectProperty IRI="#needsGripperRange"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#occurrsAssembledAt"/>
+        <ObjectProperty IRI="#occursAssembledAt"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#ordersProduct"/>
@@ -214,7 +214,7 @@
         <DataProperty IRI="#isProvided"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#occurrsAssembled"/>
+        <DataProperty IRI="#occursAssembled"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#qualifies"/>
@@ -2022,7 +2022,7 @@
         </ObjectUnionOf>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#occurrsAssembledAt"/>
+        <ObjectProperty IRI="#occursAssembledAt"/>
         <ObjectHasValue>
             <ObjectProperty IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/matter-ontology#playsRole"/>
             <NamedIndividual IRI="#Product"/>
@@ -2091,7 +2091,7 @@
         <Class IRI="#GripperRange"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#occurrsAssembledAt"/>
+        <ObjectProperty IRI="#occursAssembledAt"/>
         <Class IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/matter-ontology#Location"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
@@ -2193,7 +2193,7 @@
         <Class IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/matter-ontology#Object"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="#occurrsAssembled"/>
+        <DataProperty IRI="#occursAssembled"/>
         <ObjectHasValue>
             <ObjectProperty IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/matter-ontology#playsRole"/>
             <NamedIndividual IRI="#Product"/>
@@ -2232,7 +2232,7 @@
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="#occurrsAssembled"/>
+        <DataProperty IRI="#occursAssembled"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
     <HasKey>
@@ -2368,16 +2368,16 @@
             </ObjectPropertyAtom>
         </Body>
         <Head>
-            <DataPropertyAtom>
-                <DataProperty IRI="#occurrsAssembled"/>
-                <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#p"/>
-                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
-            </DataPropertyAtom>
             <ObjectPropertyAtom>
-                <ObjectProperty IRI="#occurrsAssembledAt"/>
+                <ObjectProperty IRI="#occursAssembledAt"/>
                 <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#p"/>
                 <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#l"/>
             </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#occursAssembled"/>
+                <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#p"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+            </DataPropertyAtom>
         </Head>
     </DLSafeRule>
     <DLSafeRule>
@@ -2693,11 +2693,6 @@
                 <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#s"/>
             </ClassAtom>
             <ObjectPropertyAtom>
-                <ObjectProperty IRI="#occurrsAssembledAt"/>
-                <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#p"/>
-                <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#s"/>
-            </ObjectPropertyAtom>
-            <ObjectPropertyAtom>
                 <ObjectProperty IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/matter-ontology#playsRole"/>
                 <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#p"/>
                 <NamedIndividual IRI="#Product"/>
@@ -2717,6 +2712,11 @@
                 <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#t"/>
                 <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
             </DataPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#occursAssembledAt"/>
+                <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#p"/>
+                <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#s"/>
+            </ObjectPropertyAtom>
         </Body>
         <Head>
             <DataPropertyAtom>
@@ -2856,6 +2856,11 @@
                 <Class IRI="#TruckBase"/>
                 <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#b"/>
             </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#occursAssembledAt"/>
+                <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#p"/>
+                <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#l"/>
+            </ObjectPropertyAtom>
             <ClassAtom>
                 <Class IRI="#TransportOperation"/>
                 <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#o"/>
@@ -2869,11 +2874,6 @@
                 <ObjectProperty IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/matter-ontology#realizesForm"/>
                 <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#x"/>
                 <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#b"/>
-            </ObjectPropertyAtom>
-            <ObjectPropertyAtom>
-                <ObjectProperty IRI="#occurrsAssembledAt"/>
-                <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#p"/>
-                <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#l"/>
             </ObjectPropertyAtom>
             <ObjectPropertyAtom>
                 <ObjectProperty IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/matter-ontology#isLocatedAt"/>
@@ -3194,7 +3194,7 @@
                 <NamedIndividual IRI="#Product"/>
             </ObjectPropertyAtom>
             <ObjectPropertyAtom>
-                <ObjectProperty IRI="#occurrsAssembledAt"/>
+                <ObjectProperty IRI="#occursAssembledAt"/>
                 <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#p"/>
                 <Variable IRI="http://www.semanticweb.org/ciirc/ontologies/2020/11/Matyas-Testbed-TruckProduction#l"/>
             </ObjectPropertyAtom>
@@ -4209,7 +4209,7 @@ S - Stříbrná</Literal>
 Schopnost ontologie poskytnout takovou informaci pomocí automatického logického odvozování  (s využtitím reasoneru Pellet) patří k jejím hlavním vlastnostem a přínosům.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#canBeAssembled</IRI>
         <Literal xml:lang="en">One of the central entities within this ontology. This data property is operated with in the attached SWRL rules and it marks those ordered products, that the production line is fit to assemble.
 
@@ -4497,38 +4497,38 @@ The ability of this ontology to provide with such information via inference (use
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#occurrsAssembled</IRI>
+        <IRI>#occursAssembled</IRI>
         <Literal xml:lang="cs">je sestaveno</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#occurrsAssembled</IRI>
-        <Literal xml:lang="en">occurrs assembled</Literal>
+        <IRI>#occursAssembled</IRI>
+        <Literal xml:lang="en">occurs assembled</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
-        <IRI>#occurrsAssembled</IRI>
+        <IRI>#occursAssembled</IRI>
         <IRI>#occurrsAssembledAt</IRI>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#occurrsAssembledAt</IRI>
+        <IRI>#occursAssembledAt</IRI>
         <Literal xml:lang="cs">Tato vazba popisuje umístění produktů na výrobní lince, přičemž lze narozdíl od vazby &apos;nachází se na&apos; vztáhnout i na abstraktní konfigurace produktu, u nichž udává všechna místa, kde se daná konfigurace nachází v sestaveném stavu.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#occurrsAssembledAt</IRI>
-        <Literal xml:lang="en">This object property describes the placement of a product on a production line. It is different from &apos;is located at&apos; in that it can describe the locations of where abstract configurations occurr in an assembled state.</Literal>
+        <IRI>#occursAssembledAt</IRI>
+        <Literal xml:lang="en">This object property describes the placement of a product on a production line. It is different from &apos;is located at&apos; in that it can describe the locations of where abstract configurations occur in an assembled state.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#occurrsAssembledAt</IRI>
+        <IRI>#occursAssembledAt</IRI>
         <Literal xml:lang="cs">je složen na</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#occurrsAssembledAt</IRI>
-        <Literal xml:lang="en">occurrs assembled at</Literal>
+        <IRI>#occursAssembledAt</IRI>
+        <Literal xml:lang="en">occurs assembled at</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
