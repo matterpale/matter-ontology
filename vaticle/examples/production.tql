@@ -1,0 +1,138 @@
+define
+
+
+## ATTRIBUTES
+
+an_id sub a_tag;
+
+a_name sub a_tag;
+
+ingredient_type sub a_category, abstract,
+    owns amount_unit,
+    plays ingredientReservation:a-type;
+
+command_type sub a_category;
+
+an_error sub attribute, abstract,       value string;
+
+    resource_error sub an_error;
+
+    execution_error sub an_error;
+
+an_amount plays ingredientReservation:an-amount;
+
+amount_unit plays ingredientReservation:amount-unit;
+
+a_priority sub attribute, abstract,     value long;
+
+    order_queue_position sub a_priority;
+
+a_status sub attribute, abstract,       value boolean;
+
+    is_available sub a_status;
+
+    is_operational sub a_status;
+
+order_time sub attribute,               value datetime;     # no nanos
+
+
+## ENTITIES
+
+Resource sub Object, owns an_id @key;
+
+    Equipment sub Resource,
+        plays carry:carrier;
+
+        Device sub Equipment,
+            owns is_operational,
+            plays command:executor;
+
+        Tool sub Equipment;
+
+    Container sub Resource,
+        plays carry:carried,
+        plays contain:container;
+
+Human sub Object,
+    plays carry:carrier,
+    plays productOrder:customer;
+
+Information owns an_id @key;
+
+    Recipe sub Information,             # sequence of commands
+        plays command:recipe;
+
+    Ingredient sub Information,
+        owns an_amount,
+        owns amount_unit,
+        owns is_available,
+        owns resource_error,
+        plays productSpec:part;
+
+
+## RELATIONS
+
+holdRelation sub relation, abstract,
+        owns an_amount,
+        owns amount_unit,
+        owns a_location,
+        relates held,
+        relates holder;
+
+    carry sub holdRelation,             # countable solid substance is carried
+        relates carried as held,
+        relates carrier as holder;
+
+    contain sub holdRelation,           # uncountable fluid substance is contained
+        relates contained as held,
+        relates container as holder;
+
+command sub relation,                   # instances of elementary commands
+    owns an_id @key,
+    owns command_type,
+    relates executor,
+    relates prev-cmd,
+    relates recipe,
+    plays command:prev-cmd;
+
+productSpec sub relation,
+    owns an_id @key,
+    owns a_name,
+    owns resource_error,
+    relates part,
+    plays productOrder:product-spec;
+
+productOrder sub relation,
+    owns an_id @key,
+    owns resource_error,
+    owns order_time,
+    owns order_queue_position,
+    relates product-spec,
+    relates customer,
+    plays ingredientReservation:an-order;
+
+ingredientReservation sub relation,
+    owns an_id @key,
+    relates a-type,
+    relates an-amount,
+    relates amount-unit,
+    relates an-order;
+
+
+## RULES
+
+rule carry-location:
+when {
+    $c (carrier: $x) isa carry;
+    $x has a_location $l;
+} then {
+    $c has $l;
+};
+
+rule contain-location:
+when {
+    $c (container: $x) isa contain;
+    $x has a_location $l;
+} then {
+    $c has $l;
+};
