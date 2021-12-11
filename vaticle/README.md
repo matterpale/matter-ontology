@@ -16,7 +16,7 @@ For easy navigation within queries, Matter Ontology uses forced snake_case in na
 ```typeql
 a_tag sub attribute, abstract,          value string;
 
-a_type sub attribute, abstract,         value string;
+a_category sub attribute, abstract,     value string;
 
 a_location sub attribute,               value string,
     owns a_location;
@@ -73,13 +73,13 @@ Information sub entity, abstract,       # entities with loose timespace dependen
 An abstract entity for representing all timespace-dependent physical entities of given domains.
 
 #### Object
-A tangible object, typicaly a solid item. It may prove more convenient to represent fluids with the help of `a_type` attribute and carrying/containing relations for its potentially frequent changes of multitude and location.
+A tangible object, typicaly a solid item. It may prove more convenient to represent fluids with the help of `a_category` attribute and carrying/containing relations for its potentially frequent changes of multitude and location.
 
 #### Process
 An entity for representing physical occurrences of events.
 
 #### Information
-Information may or may not relate to time-space but it is not a tangible part of it in any case. For example, if we describe a recipe (perhaps as a relation relating ingredients with tools etc.), one of the ingredients may look something like "2 cups of wholewheat flour". Now, there may be no physical instance of this ingredient present in the described system, it is merely an idea, a description of the kind of flour (`a_type`) and its `an_amount` and `amount_unit`:
+Information may or may not relate to time-space but it is not a tangible part of it in any case. For example, if we describe a recipe (perhaps as a relation relating ingredients with tools etc.), one of the ingredients may look something like "2 cups of wholewheat flour". Now, there may be no physical instance of this ingredient present in the described system, it is merely an idea, a description of the kind of flour (`a_category`) and its `an_amount` and `amount_unit`:
 ```typeql
 define
 bakingRecipe sub relation, relates ingredient;
@@ -113,7 +113,7 @@ when {
 ```
 
 #### Location Transitivity
-This rule assures transitivity among locations, e.g., if a town has `a_location` a region which in turn has `a_location` a country, then the town naturally finds itself in the country as well. If a user needs to distinguish between these locations and only filter out, say, the country, one can simply introduce a `location_type sub a_type` and distinguish locations using this new attribute.
+This rule assures transitivity among locations, e.g., if a town has `a_location` a region which in turn has `a_location` a country, then the town naturally finds itself in the country as well. If a user needs to distinguish between these locations and only filter out, say, the country, one can simply introduce a `location_type sub a_category` and distinguish locations using this new attribute.
 
 ### Left Behind
 
