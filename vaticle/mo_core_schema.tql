@@ -4,8 +4,6 @@ define
 
 a_tag sub attribute, abstract,          value string;
 
-    a_name sub a_tag;
-
 a_category sub attribute, abstract,     value string;
 
 a_location sub attribute,               value string,
