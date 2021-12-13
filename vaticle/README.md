@@ -9,7 +9,7 @@ An attempt at translating Matter Ontology from its original OWL version into Vat
 ![mo_core](https://user-images.githubusercontent.com/56684558/145677602-384ed825-db17-4008-9010-fd709ce0a0be.png)
 
 For the justification of design choices in Matter Ontology, see the [owl directory](https://github.com/matterpale/matter-ontology/tree/main/owl).
-
+##
 ### Attributes
 For easy navigation within queries, Matter Ontology uses forced snake_case in naming attributes, often using indefinite articles.
 
@@ -46,12 +46,12 @@ Amounts of things (typically instances of resources) are modelled to be expresse
 
 ```typeql
 insert
-$j isa Juice, has an_amount 26, has amount_unit "l";   # L for litre
-$b isa Bread, has an_amount 11, has amount_unit "pc";  # PC for piece, as in a loaf
+$j isa Juice, has an_amount 26, has amount_unit "l";   # l for litre
+$b isa Bread, has an_amount 11, has amount_unit "pc";  # pc for piece, as in a loaf
 ```
 
 IMPORTANT: In TypeDB, each attribute only has one instance of given value within the database. That means we cannot model `an-amount` to own `amount-unit` since then we would bind the `26` instance of `an_amount` to the `"l"` instance of `amount-unit` - then, if you also had 26 kilograms of sugar, there would be no direct way of determining the correct `amount_unit` for `26`.
-
+##
 ### Entities
 For easier navigation within queries, Matter Ontology uses PascalCase for entity names.
 ```typeql
@@ -85,7 +85,7 @@ define
 bakingRecipe sub relation, relates ingredient;
 BakingIngredient sub Information, owns an_amount, owns amount_unit, plays bakingRecipe:ingredient;
 ```
-
+##
 ### Relations
 For easier navigation within queries, Matter Ontology uses camelCase for relation names and kebab-case for roles. None of these is forced because roles only have meaning within their relation's context, so single-word naming should not lead to ambiguities.
 
@@ -98,7 +98,7 @@ duration sub relation,
 
 #### Duration
 The only relation in the core Matter Ontology is the one setting basic context for time intervals. In its basic form, `duration` only relates an instance of a process and together with `occurs_at` as potential starting point allows for interval specification. Obviously, in timetable scenarios one would rather introduce a `start_date` and `end_date` - that is in no conflict with Matter Ontology.
-
+##
 ### Rules
 Matter Ontology uses kebab-case for rules. Once defined, rules are never explicitly operated, so confusion with relation roles should never arise.
 
@@ -114,7 +114,7 @@ when {
 
 #### Location Transitivity
 This rule assures transitivity among locations, e.g., if a town has `a_location` a region which in turn has `a_location` a country, then the town naturally finds itself in the country as well. If a user needs to distinguish between these locations and only filter out, say, the country, one can simply introduce a `location_type sub a_category` and distinguish locations using this new attribute.
-
+##
 ### Left Behind
 
 #### Abstract Things
