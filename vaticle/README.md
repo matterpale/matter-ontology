@@ -31,7 +31,7 @@ amount_unit sub attribute,              value string;
 #### Tag
 An abstract string super-attribute for any sort of identifiers, e.g., names (first or last), nicknames, uuids etc.
 
-#### Type (CATEGORY?)
+#### Category
 An abstract string super-attribute for classification of data into categories, e.g., types of payment, user access, material etc.
 
 #### Location
