@@ -32,11 +32,11 @@ This work was conducted using the Protégé resource, which is supported by gran
 
 ## Sources
 
-[1] Riichiro Mizoguchi. Tutorial on Ontological Engineering: Part 3: Advanced
+[1] Riichiro Mizoguchi. Tutorial on Ontological Engineering Part 3: Advanced
 Course of Ontological Engineering. New Generation Computing, 22:193–220,
 2004.
 
-[2] Riichiro Mizoguchi. Tutorial on Ontological Egineering Part 2: Ontology
+[2] Riichiro Mizoguchi. Tutorial on Ontological Engineering Part 2: Ontology
 Development, Tools and Languages. New Generation Computing, 22:61–96,
 2009.
 
