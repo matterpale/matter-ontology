@@ -41,13 +41,16 @@ Matter Ontology describes locations with a transitive (see rules) string attribu
 A basic datetime attribute for description of processes, e.g. times of delivery, departure, arrival etc.
 
 #### Amount & Amount Unit
-Amounts of things (typically instances of resources) are modelled to be expressed with the integer (long) attribute `an_amount`, while also specifying given amount with another attribute `amount_unit`. For example, a bistro may have 26 litres of orange juice and 11 loafs of bread:
+Amounts of things (typically instances of resources) are modelled to be expressed with the integer (long) attribute `an_amount`, while also specifying given amount with another attribute `amount_unit`. For example, a bistro may have 26 litres of orange juice and 11 loafs of barley bread:
 
 
 ```typeql
-insert
-$j isa Juice, has an_amount 26, has amount_unit "l";   # l for litre
-$b isa Bread, has an_amount 11, has amount_unit "pc";  # pc for piece, as in a loaf
+define      ## schema write query
+    food_item sub a_category, owns an_amount, owns amount_unit;
+
+insert      ## data write query
+    "orange juice" isa food_item, has an_amount 26, has amount_unit "litre";
+    "barley bread" isa food_item, has an_amount 11, has amount_unit "piece";
 ```
 
 IMPORTANT: In TypeDB, each attribute only has one instance of given value within the database. That means we cannot model `an-amount` to own `amount-unit` since then we would bind the `26` instance of `an_amount` to the `"l"` instance of `amount-unit` - then, if you also had 26 kilograms of sugar, there would be no direct way of determining the correct `amount_unit` for `26`.
