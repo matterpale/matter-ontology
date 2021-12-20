@@ -98,6 +98,7 @@ when {
 This rule assures transitivity among locations, e.g., if a town has `a_location` a region which in turn has `a_location` a country, then the town naturally finds itself in the country as well. If a user needs to distinguish between these locations and only filter out, say, the country, one can simply introduce a `location_type sub a_category` and distinguish locations using this new attribute.
 ##
 ### Left Behind
+![owl_to_typedb](https://user-images.githubusercontent.com/56684558/146795293-f95d2615-ea1d-47a8-8807-2f579f3033b0.png)
 #### Abstract Things
 Thanks to the instantiation of all things (attributes, entities & relations) in TypeDB, there is little reason to introduce Form or Quality explicitly because those can be both easily represented by attributes. Since these attributes are instances of the database, they can be directly referred to in rules and queries and thus used for inference.
 #### Roles
