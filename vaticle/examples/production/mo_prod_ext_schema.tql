@@ -7,9 +7,7 @@ an_id sub a_tag;
 
 a_name sub a_tag;
 
-ingredient_type sub a_category, abstract,
-    owns amount_unit,
-    plays ingredientReservation:a-type;
+ingredient_type sub a_category;
 
 command_type sub a_category;
 
@@ -18,10 +16,6 @@ an_error sub attribute, abstract,       value string;
     resource_error sub an_error;
 
     execution_error sub an_error;
-
-an_amount plays ingredientReservation:an-amount;
-
-amount_unit plays ingredientReservation:amount-unit;
 
 a_priority sub attribute, abstract,     value long;
 
@@ -33,12 +27,13 @@ a_status sub attribute, abstract,       value boolean;
 
     is_operational sub a_status;
 
-order_time sub attribute,               value datetime;     # no nanos
+order_time sub attribute,               value datetime;
 
 
 ## ENTITIES
 
-Resource sub Object, owns an_id @key;
+Resource sub Object,
+    owns an_id @key;
 
     Equipment sub Resource,
         plays carry:carrier;
@@ -63,6 +58,7 @@ Information owns an_id @key;
         plays command:recipe;
 
     Ingredient sub Information,
+        owns ingredient_type,
         owns an_amount,
         owns amount_unit,
         owns is_available,
@@ -113,9 +109,9 @@ productOrder sub relation,
 
 ingredientReservation sub relation,
     owns an_id @key,
-    relates a-type,
-    relates an-amount,
-    relates amount-unit,
+    owns ingredient_type,
+    owns an_amount,
+    owns amount_unit,
     relates an-order;
 
 

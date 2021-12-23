@@ -1,0 +1,121 @@
+insert
+
+$r1 isa Robot,
+    has an_id "R1",
+    has a_name "Agilus 1",
+    has a_location "r1",
+    has is_operational true;
+
+$r2 isa Robot,
+    has an_id "R2",
+    has a_name "Agilus 2",
+    has a_location "r2",
+    has is_operational true;
+    
+$r3 isa Robot,
+    has an_id "R3",
+    has a_name "Agilus 3",
+    has a_location "r3",
+    has is_operational true;
+    
+$r4 isa Robot,
+    has an_id "R4",
+    has a_name "Iiwa",
+    has a_location "r4",
+    has is_operational true;
+
+$s1 isa Shuttle,
+    has an_id "shuttle-1",
+    has a_name "Shuttle 1",
+    has a_location "S110",
+    has is_operational true;
+
+$s2 isa Shuttle,
+    has an_id "shuttle-2",
+    has a_name "Shuttle 2",
+    has a_location "S23",
+    has is_operational true;
+
+$bc isa IndependentDevice,
+    has an_id "montrac",
+    has a_name "Montrac rail system",
+    has a_location "Production-line",
+    has is_operational true;
+
+$gr1 isa Gripper,
+    has an_id "g1",
+    has a_name "Gripper 1";
+
+$gr2 isa Gripper,
+    has an_id "g2",
+    has a_name "Gripper 2";
+
+$gr3 isa Gripper,
+    has an_id "g3",
+    has a_name "Gripper 3";
+
+$gr4 isa Gripper,
+    has an_id "g4",
+    has a_name "Gripper 4";
+
+(attached: $gr1, attacher: $r1) isa attach;
+
+(attached: $gr2, attacher: $r2) isa attach;
+
+(attached: $gr3, attacher: $r3) isa attach;
+
+(attached: $gr4, attacher: $r4) isa attach;
+
+$pickcmd "PICK" isa command_type;
+
+$placecmd "PLACE" isa command_type;
+
+$movecmd "MOVE_AND_LOCK" isa command_type;
+
+$itfront "Truck Front" isa ingredient_type;
+
+$itback "Truck Back" isa ingredient_type;
+
+$itchass "Truck Chassis" isa ingredient_type;
+
+$ing1 isa Ingredient,
+    has an_id "part1",
+    has ingredient_type $itfront,
+    has an_amount 1,
+    has amount_unit "pc";
+
+$ing2 isa Ingredient,
+    has an_id "part2",
+    has ingredient_type $itback,
+    has an_amount 1,
+    has amount_unit "pc";
+
+$ing3 isa Ingredient,
+    has an_id "part3",
+    has ingredient_type $itback,
+    has an_amount 1,
+    has amount_unit "pc";
+
+$des "An example truck product." isa a_description,
+    has a_language "en";
+
+$spec (part: $ing1, part: $ing2,
+        part: $ing3) isa productSpec,
+    has an_id "truck-general",
+    has a_name "Truck",
+    has a_description $des;
+
+$m1 isa Material,
+    has an_id "front134",
+    has ingredient_type $itfront,
+    has a_location "S23";
+
+$m2 isa Material,
+    has an_id "back042",
+    has ingredient_type $itback,
+    has a_location "r3";
+
+$m3 isa Material,
+    has an_id "chassis3215",
+    has ingredient_type $itchass,
+    has a_location "r1";

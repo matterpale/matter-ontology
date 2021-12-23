@@ -1,0 +1,227 @@
+define
+
+
+## ATTRIBUTES
+
+an_id sub a_tag;
+
+a_name sub a_tag;
+
+a_description sub attribute,            value string,
+    owns a_language;
+
+a_language sub attribute,               value string;
+
+# Unlike commands themselves, command types are not specific to recipes.
+# They are owned by commands AND by independent devices capable of them.
+command_type owns is_provided;
+
+location_type sub a_category;
+
+a_location owns location_type;
+
+gripper_range sub attribute,            value long,
+    owns an_amount,
+    owns amount_unit;
+
+a_popularity sub a_priority;
+
+is_doable sub a_status;
+
+is_capable sub a_status;        # Is an independent device capable of its commands?
+
+is_provided sub a_status;       # Is a command type provided by an indie device?
+
+schedule_time sub attribute,            value datetime;       # Requested time of order delivery.
+
+estimate_time sub attribute,            value datetime;       # Estimated time of order delivery.
+
+
+## ENTITIES
+
+Resource owns a_name;
+
+IndependentDevice sub Device,
+    owns command_type,
+    owns is_capable;      # Capability attribute.
+
+    Robot sub IndependentDevice,
+        plays attach:attacher;
+
+    Shuttle sub IndependentDevice;
+
+Gripper sub Tool,
+    owns gripper_range,
+    plays attach:attached;
+
+Material sub Resource,
+    owns ingredient_type;
+
+Product sub ConcreteEntity,     # Finished product with location, delivery info etc.
+    plays productOrder:the-product;
+
+
+## RELATIONS
+
+attach sub relation,
+    relates attacher,
+    relates attached;
+
+productSpec 
+    owns a_description,
+    owns is_doable;
+
+productOrder 
+    owns is_doable,
+    owns schedule_time,
+    owns estimate_time,
+    relates the-product;
+
+
+## RULES
+
+        # Unit rules:
+
+rule contain-unit-ml:
+when {
+    $c isa contain;
+} then {
+    $c has amount_unit "ml";
+};
+
+rule carry-unit-pc:
+when {
+    $c isa carry;
+} then {
+    $c has amount_unit "pc";
+};
+
+        # Resource error rules:
+
+rule product-spec-resource-error:
+when {
+    $s (part: $p) isa productSpec;
+    $p isa Ingredient, has is_available false;
+} then {
+    $s has resource_error "INGREDIENT_MISSING";
+};
+
+rule product-order-resource-error:
+when {
+    $o (product-spec: $s) isa productOrder;
+    $s has resource_error $x;
+} then {
+    $o has $x;
+};
+
+        # Doability rules:
+
+rule product-spec-doable:
+when {
+    $s isa productSpec;
+    not {
+        $i isa Ingredient;
+        $s (part: $i);
+        $i has is_available false;
+    };
+} then {
+    $s has is_doable true;
+};
+
+rule product-spec-undoable:
+when {
+    $s (part: $i) isa productSpec;
+    $i isa Ingredient, has is_available false;
+} then {
+    $s has is_doable false;
+};
+
+rule product-order-doability:
+when {
+    $o (product-spec: $s) isa productOrder;
+    $s has is_doable $x;
+} then {
+    $o has $x;
+};
+
+        # Capability rules:
+
+rule robot-pick-capability:
+when {
+    $r isa Robot;
+} then {
+    $r has command_type "PICK";
+};
+
+rule robot-place-capability:
+when {
+    $r isa Robot;
+} then {
+    $r has command_type "PLACE";
+};
+
+rule robot-capable:
+when {
+    $r isa Robot;
+    $r has is_operational true;
+    $g isa Gripper;
+    (attacher: $r, attached: $g) isa attach;
+} then {
+    $r has is_capable true;
+};
+
+rule robot-incapable:
+when {
+    $r isa Robot;
+    not {
+        $r has is_operational true;
+        $g isa Gripper;
+        (attacher: $r, attached: $g) isa attach;
+    };
+} then {
+    $r has is_capable false;
+};
+
+rule shuttle-move-and-lock-capability:
+when {
+    $s isa Shuttle;
+} then {
+    $s has command_type "MOVE_AND_LOCK";
+};
+
+rule shuttle-capable:
+when {
+    $s isa Shuttle, has is_operational true;
+} then {
+    $s has is_capable true;
+};
+
+rule shuttle-incapable:
+when {
+    $s isa Shuttle;
+    not {
+        $s has is_operational true;
+    };
+} then {
+    $s has is_capable false;
+};
+
+rule command-type-provided:
+when {
+    $c isa command_type;
+    $d isa IndependentDevice, has $c;
+    $d has is_capable true;
+} then {
+    $c has is_provided true;
+};
+
+rule command-type-not-provided:
+when {
+    $c isa command_type;
+    not {
+        $d isa IndependentDevice, has $c;
+        $d has is_capable true;
+    };
+} then {
+    $c has is_provided false;
+};
