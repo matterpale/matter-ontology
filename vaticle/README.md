@@ -80,7 +80,7 @@ BakingIngredient sub Information, owns an_amount, owns amount_unit, plays baking
 ```
 ##
 ### Relations
-For easier navigation within queries, Matter Ontology uses *camelCase* for relation names and kebab-case for roles. None of these is forced because roles only have meaning within their relation's context, so single-word naming should not lead to ambiguities.
+For easier navigation within queries, Matter Ontology uses *camelCase* for relation names and *kebab-case* for roles. None of these is forced because roles only have meaning within their relation's context, so single-word naming should not lead to ambiguities.
 ```typeql
 duration sub relation,
     owns an_amount,                     # length of time
