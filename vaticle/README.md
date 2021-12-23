@@ -1,7 +1,12 @@
 # Matter Ontology in TypeDB
-An attempt at translating Matter Ontology from its original OWL version into Vaticle TypeDB with usability in mind.
+An attempt at translating Matter Ontology from its original OWL version into Vaticle TypeDB with focus on usability.
 ## Summary
-// TODO: A list of main takeaways, ideas concerning classification, schema design pitfalls etc. 
+Here is a list of some of the things to keep in mind when adopting Matter Ontology, typically by extending it:
+- Maintain a clear distinction between physically existent (`ConcreteEntity`) things and others, i.e., information, abstractions etc.
+- Consider the context and use cases before picking between the two main approaches of extension:
+  - define a new sub-attribute of `a_category` and then connect given data with its instances (by attribute ownership)
+  - define a comprehensive subhierarchy of entities and use it to instantiate given data
+- Keep in mind value uniqueness of attribute types, i.e., utilize its instances with caution.
 ## Overview of the Core Schema
 ![mo_core](https://user-images.githubusercontent.com/56684558/145677602-384ed825-db17-4008-9010-fd709ce0a0be.png)
 For the justification of design choices in Matter Ontology, see the [owl directory](https://github.com/matterpale/matter-ontology/tree/main/owl).
