@@ -7,6 +7,7 @@ Here is a list of some of the things to keep in mind when adopting Matter Ontolo
   - define a new sub-attribute of `a_category` and then connect given data with its instances (by attribute ownership)
   - define a comprehensive subhierarchy of entities and use it to instantiate given data
 - Keep in mind value uniqueness of attribute types, i.e., utilize its instances with caution, see [here](https://github.com/matterpale/matter-ontology/blob/main/vaticle/README.md#amount--amount-unit).
+- Non-abstract types cannot own abstract attributes - relations can work around by setting the abstract attribute to play a role of theirs.
 ## Overview of the Core Schema
 ![mo_core](https://user-images.githubusercontent.com/56684558/145677602-384ed825-db17-4008-9010-fd709ce0a0be.png)
 For the justification of design choices in Matter Ontology, see the [owl directory](https://github.com/matterpale/matter-ontology/tree/main/owl).
@@ -80,7 +81,7 @@ BakingIngredient sub Information, owns an_amount, owns amount_unit, plays baking
 ```
 ##
 ### Relations
-For easier navigation within queries, Matter Ontology uses *camelCase* for relation names and *kebab-case* for roles. None of these is forced because roles only have meaning within their relation's context, so single-word naming should not lead to ambiguities.
+For easier navigation within queries, Matter Ontology uses *camelCase* for relation names and kebab-case for roles. None of these is forced because roles only have meaning within their relation's context, so single-word naming should not lead to ambiguities.
 ```typeql
 duration sub relation,
     owns an_amount,                     # length of time
