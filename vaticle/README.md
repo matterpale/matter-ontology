@@ -6,7 +6,7 @@ Here is a list of some of the things to keep in mind when adopting Matter Ontolo
 - Consider the context and use cases before picking between the two main approaches of extension:
   - define a new sub-attribute of `a_category` and then connect given data with its instances (by attribute ownership)
   - define a comprehensive subhierarchy of entities and use it to instantiate given data
-- Keep in mind value uniqueness of attribute types, i.e., utilize its instances with caution.
+- Keep in mind value uniqueness of attribute types, i.e., utilize its instances with caution, see [here](https://github.com/matterpale/matter-ontology/blob/main/vaticle/README.md#amount--amount-unit).
 ## Overview of the Core Schema
 ![mo_core](https://user-images.githubusercontent.com/56684558/145677602-384ed825-db17-4008-9010-fd709ce0a0be.png)
 For the justification of design choices in Matter Ontology, see the [owl directory](https://github.com/matterpale/matter-ontology/tree/main/owl).
@@ -45,7 +45,7 @@ insert      ## data write query
     "orange juice" isa food_item, has an_amount 26, has amount_unit "litre";
     "barley bread" isa food_item, has an_amount 11, has amount_unit "piece";
 ```
-IMPORTANT: In TypeDB, each attribute only has one instance of given value within the database. That means we cannot model `an-amount` to own `amount-unit` since then we would bind the `26` instance of `an_amount` to the `"l"` instance of `amount-unit` - then, if you also had 26 kilograms of sugar, there would be no direct way of determining the correct `amount_unit` for `26`.
+IMPORTANT: In TypeDB, each attribute only has one instance of given value within the database, so we should not say `26 has amount_unit "litre"`, because if you also had 26 kilograms of sugar, there would be no direct way of determining the correct `amount_unit` for `26`. That means we cannot model `an_amount` to own `amount_unit`.
 ##
 ### Entities
 For easier navigation within queries, Matter Ontology uses *PascalCase* for entity names.
@@ -64,13 +64,15 @@ Information sub entity, abstract,       # entities with loose timespace dependen
     owns a_name;       
 ```
 #### Concrete Entity
-An abstract entity for representing all timespace-dependent physical entities of given domains.
+An entity for representing all timespace-dependent physical entities of given domains. It is only abstract in the context of database, i.e., that it shall not be instantiated.
 #### Object
-A tangible object, typicaly a solid item. It may prove more convenient to represent fluids with the help of `a_category` attribute and carrying/containing relations for its potentially frequent changes of multitude and location.
+A tangible object, typically a solid item, a piece of material or a living person. It may prove more convenient to represent fluids with the help of a sub-attribute of `a_category` and carry/contain relations for its potentially frequent changes of multitude and location, see [here]().
 #### Process
 An entity for representing physical occurrences of events.
 #### Information
-Information may or may not relate to time-space but it is not a tangible part of it in any case. For example, if we describe a recipe (perhaps as a relation relating ingredients with tools etc.), one of the ingredients may look something like "2 cups of wholewheat flour". Now, there may be no physical instance of this ingredient present in the described system, it is merely an idea, a description of the kind of flour (`a_category`) and its `an_amount` and `amount_unit`:
+Information may or may not relate to time-space but it is not a tangible part of it.
+
+For example, if we describe a recipe (perhaps as a relation relating ingredients with tools etc.), one of the ingredients may look something like "2 cups of wholewheat flour". Now, there may be no physical instance of this ingredient present in the described system, it is merely an idea, a description of the kind of flour (`a_category`) and its `an_amount` and `amount_unit`:
 ```typeql
 define
 bakingRecipe sub relation, relates ingredient;
@@ -100,7 +102,7 @@ when {
 };
 ```
 #### Location Transitivity
-This rule assures transitivity among locations, e.g., if a town has `a_location` a region which in turn has `a_location` a country, then the town naturally finds itself in the country as well. If a user needs to distinguish between these locations and only filter out, say, the country, one can simply introduce a `location_type sub a_category` and distinguish locations using this new attribute.
+This rule assures transitivity among locations, e.g., if a town has `a_location` a region which in turn has `a_location` a country, then the town naturally finds itself in the country as well. If a user needs to distinguish between these locations and only filter out, say, the country, one can simply introduce a `location_type sub a_category` and distinguish locations by defining them to own this new attribute.
 ##
 ### Comparison with OWL
 Let's take a quick look at how this translation reflects the original class taxonomy and consider what we left behind:
