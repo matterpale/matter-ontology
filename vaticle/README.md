@@ -64,7 +64,7 @@ An abstract entity for representing all timespace-dependent physical entities of
 A tangible object, typicaly a solid item. It may prove more convenient to represent fluids with the help of `a_category` attribute and carrying/containing relations for its potentially frequent changes of multitude and location.
 #### Process
 An entity for representing physical occurrences of events.
-#### Information (Idea?)
+#### Information
 Information may or may not relate to time-space but it is not a tangible part of it in any case. For example, if we describe a recipe (perhaps as a relation relating ingredients with tools etc.), one of the ingredients may look something like "2 cups of wholewheat flour". Now, there may be no physical instance of this ingredient present in the described system, it is merely an idea, a description of the kind of flour (`a_category`) and its `an_amount` and `amount_unit`:
 ```typeql
 define
@@ -97,9 +97,11 @@ when {
 #### Location Transitivity
 This rule assures transitivity among locations, e.g., if a town has `a_location` a region which in turn has `a_location` a country, then the town naturally finds itself in the country as well. If a user needs to distinguish between these locations and only filter out, say, the country, one can simply introduce a `location_type sub a_category` and distinguish locations using this new attribute.
 ##
-### Left Behind
-![owl_to_typedb](https://user-images.githubusercontent.com/56684558/146795293-f95d2615-ea1d-47a8-8807-2f579f3033b0.png)
-#### Abstract Things
-Thanks to the instantiation of all things (attributes, entities & relations) in TypeDB, there is little reason to introduce Form or Quality explicitly because those can be both easily represented by attributes. Since these attributes are instances of the database, they can be directly referred to in rules and queries and thus used for inference.
-#### Roles
-Thanks to the concept of roles being integral to TypeDB, there is no need for introducing them explicitly as entities. In TypeDB, anything that participates in an instance of a relation has to play a specific role within it.
+### Comparison with OWL
+Let's take a quick look at how this translation reflects the original class taxonomy and consider what we left behind:
+
+![owl_to_typedb](https://user-images.githubusercontent.com/56684558/147237301-c8c9e38a-71fc-4f38-ab89-726a4a416155.png)
+#### Role
+Thanks to the concept of roles being integral to TypeDB, there is no need for introducing them explicitly as entities. In TypeDB, anything that participates in an instance of a relation has to play a specific role within it. We can also drop the concept of 'Basic Thing' since its only meaning is "a non-role".
+#### Abstract Thing
+Thanks to the instantiation of all things (attributes, entities & relations) in TypeDB, there is little reason to introduce Form or Quality explicitly as entities because those can be both represented by attributes in a clearer way. Since these attributes are instances of the database, they can be directly referred to in rules and queries and thus flexibly used for inference. Also, 'Form' translates accurately to `a_category` (as a handy alternative to large branching of schema taxonomy) and 'Quality' belongs among all other kinds of attributes.
